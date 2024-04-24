@@ -198,6 +198,7 @@ const FormLayoutsSeparator = () => {
                 showYearDropdown
                 showMonthDropdown
                 placeholderText='MM-DD-YYYY'
+                // @ts-ignore
                 customInput={<CustomInput />}
                 id='form-layouts-separator-date'
                 onChange={(date: Date) => setDate(date)}

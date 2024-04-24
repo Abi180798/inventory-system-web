@@ -3,6 +3,8 @@ import { useState, ChangeEvent } from 'react'
 
 // ** MUI Imports
 import Paper from '@mui/material/Paper'
+import Box from '@mui/material/Box'
+import IconButton from '@mui/material/IconButton'
 import Table from '@mui/material/Table'
 import TableRow from '@mui/material/TableRow'
 import TableHead from '@mui/material/TableHead'
@@ -11,15 +13,21 @@ import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
 
-interface Column {
-  id: 'name' | 'code' | 'population' | 'size' | 'density'
+// ** Icons Imports
+import File from 'mdi-material-ui/File'
+import Pencil from 'mdi-material-ui/Pencil'
+import Delete from 'mdi-material-ui/Delete'
+import { useRouter } from 'next/router'
+
+export interface Column {
+  id: string
   label: string
   minWidth?: number
   align?: 'right'
   format?: (value: number) => string
 }
 
-const columns: readonly Column[] = [
+const columnsDefault: readonly Column[] = [
   { id: 'name', label: 'Name', minWidth: 170 },
   { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
   {
@@ -59,7 +67,7 @@ function createData(name: string, code: string, population: number, size: number
   return { name, code, population, size, density }
 }
 
-const rows = [
+const rowsDefault = [
   createData('India', 'IN', 1324171354, 3287263),
   createData('China', 'CN', 1403500365, 9596961),
   createData('Italy', 'IT', 60483973, 301340),
@@ -77,56 +85,91 @@ const rows = [
   createData('Brazil', 'BR', 210147125, 8515767)
 ]
 
-const TableStickyHeader = () => {
-  // ** States
-  const [page, setPage] = useState<number>(0)
-  const [rowsPerPage, setRowsPerPage] = useState<number>(10)
+interface TableStickyHeaderProps {
+  columns: readonly Column[]
+  rows: any[]
+  page: number
+  count: number
+  rowsPerPage: number
+  isAction?: boolean,
+  isViewFile?: boolean
+  handleEdit?: (id: string) => void
+  handleDelete?: (id: string) => void
+  handleChangePage: (e: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => void
+  handleChangeRowsPerPage: (e: ChangeEvent<HTMLInputElement>) => void
+}
 
-  const handleChangePage = (event: unknown, newPage: number) => {
-    setPage(newPage)
-  }
-
-  const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
-    setRowsPerPage(+event.target.value)
-    setPage(0)
-  }
-
+export const TableStickyHeader: React.FC<TableStickyHeaderProps> = ({
+  columns, rows, page, count, rowsPerPage,
+  isAction = true, isViewFile = false,
+  handleEdit, handleDelete, handleChangeRowsPerPage, handleChangePage
+}) => {
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label='sticky table'>
           <TableHead>
             <TableRow>
-              {columns.map(column => (
+              {(columns || columnsDefault).map(column => (
                 <TableCell key={column.id} align={column.align} sx={{ minWidth: column.minWidth }}>
                   {column.label}
                 </TableCell>
               ))}
+              {isAction &&
+                <TableCell>
+                  Action
+                </TableCell>
+              }
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
-              return (
-                <TableRow hover role='checkbox' tabIndex={-1} key={row.code}>
-                  {columns.map(column => {
-                    const value = row[column.id]
+            {(rows)
+              // .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map(row => {
+                return (
+                  <TableRow hover role='checkbox' tabIndex={-1} key={row.code}>
+                    {(columns || columnsDefault).map(column => {
+                      const value = row[column.id]
 
-                    return (
-                      <TableCell key={column.id} align={column.align}>
-                        {column.format && typeof value === 'number' ? column.format(value) : value}
+                      return (
+                        <TableCell key={column.id} align={column.align}>
+                          {column.format && typeof value === 'number' ? column.format(value) : value}
+                        </TableCell>
+                      )
+                    })}
+                    {isAction &&
+                      <TableCell>
+                        <Box sx={{ display: 'flex' }}>
+                          {isViewFile && row?.FileName_fake &&
+                            <IconButton href={`https://sikd.arsip.unram.ac.id/FilesUploaded/${row?.NFileDir}/${row?.FileName_fake}`} target="_blank"
+                              size='small' aria-label='settings' sx={{ color: 'text.secondary' }}>
+                              <File />
+                            </IconButton>
+                          }
+                          {handleEdit &&
+                            <IconButton onClick={() => handleEdit(row?.NId)}
+                              size='small' aria-label='settings' sx={{ color: 'text.secondary' }}>
+                              <Pencil />
+                            </IconButton>
+                          }
+                          {handleDelete &&
+                            <IconButton onClick={() => handleDelete(row?.NId)} size='small' aria-label='settings' sx={{ color: 'text.secondary' }}>
+                              <Delete />
+                            </IconButton>
+                          }
+                        </Box>
                       </TableCell>
-                    )
-                  })}
-                </TableRow>
-              )
-            })}
+                    }
+                  </TableRow>
+                )
+              })}
           </TableBody>
         </Table>
       </TableContainer>
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component='div'
-        count={rows.length}
+        count={count || rowsDefault.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

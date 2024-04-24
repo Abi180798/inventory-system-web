@@ -52,6 +52,7 @@ const TabInfo = () => {
                 showMonthDropdown
                 id='account-settings-date'
                 placeholderText='MM-DD-YYYY'
+                // @ts-ignore
                 customInput={<CustomInput />}
                 onChange={(date: Date) => setDate(date)}
               />

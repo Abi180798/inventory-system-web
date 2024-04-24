@@ -1,101 +1,87 @@
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
-
-// ** Icons Imports
-import Poll from 'mdi-material-ui/Poll'
-import CurrencyUsd from 'mdi-material-ui/CurrencyUsd'
-import HelpCircleOutline from 'mdi-material-ui/HelpCircleOutline'
-import BriefcaseVariantOutline from 'mdi-material-ui/BriefcaseVariantOutline'
-
-// ** Custom Components Imports
-import CardStatisticsVerticalComponent from 'src/@core/components/card-statistics/card-stats-vertical'
-
-// ** Styled Component Import
-import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
+import Typography from '@mui/material/Typography'
 
 // ** Demo Components Imports
-import Table from 'src/views/dashboard/Table'
-import Trophy from 'src/views/dashboard/Trophy'
-import TotalEarning from 'src/views/dashboard/TotalEarning'
-import StatisticsCard from 'src/views/dashboard/StatisticsCard'
-import WeeklyOverview from 'src/views/dashboard/WeeklyOverview'
-import DepositWithdraw from 'src/views/dashboard/DepositWithdraw'
-import SalesByCountries from 'src/views/dashboard/SalesByCountries'
+import CardUser from 'src/views/cards/CardUser'
+import CardImgTop from 'src/views/cards/CardImgTop'
+import CardMobile from 'src/views/cards/CardMobile'
+import CardSupport from 'src/views/cards/CardSupport'
+import CardTwitter from 'src/views/cards/CardTwitter'
+import CardFacebook from 'src/views/cards/CardFacebook'
+import CardLinkedIn from 'src/views/cards/CardLinkedIn'
+import CardAppleWatch from 'src/views/cards/CardAppleWatch'
+import CardMembership from 'src/views/cards/CardMembership'
+import CardInfluencer from 'src/views/cards/CardInfluencer'
+import CardNavigation from 'src/views/cards/CardNavigation'
+import CardWithCollapse from 'src/views/cards/CardWithCollapse'
+import CardVerticalRatings from 'src/views/cards/CardVerticalRatings'
+import CardNavigationCenter from 'src/views/cards/CardNavigationCenter'
+import CardHorizontalRatings from 'src/views/cards/CardHorizontalRatings'
+import Home from 'src/pages/app/home'
 
-const Dashboard = () => {
+const CardBasic = () => {
   return (
-    <ApexChartWrapper>
-      <Grid container spacing={6}>
-        <Grid item xs={12} md={4}>
-          <Trophy />
-        </Grid>
-        <Grid item xs={12} md={8}>
-          <StatisticsCard />
-        </Grid>
-        <Grid item xs={12} md={6} lg={4}>
-          <WeeklyOverview />
-        </Grid>
-        <Grid item xs={12} md={6} lg={4}>
-          <TotalEarning />
-        </Grid>
-        <Grid item xs={12} md={6} lg={4}>
-          <Grid container spacing={6}>
-            <Grid item xs={6}>
-              <CardStatisticsVerticalComponent
-                stats='$25.6k'
-                icon={<Poll />}
-                color='success'
-                trendNumber='+42%'
-                title='Total Profit'
-                subtitle='Weekly Profit'
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <CardStatisticsVerticalComponent
-                stats='$78'
-                title='Refunds'
-                trend='negative'
-                color='secondary'
-                trendNumber='-15%'
-                subtitle='Past Month'
-                icon={<CurrencyUsd />}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <CardStatisticsVerticalComponent
-                stats='862'
-                trend='negative'
-                trendNumber='-18%'
-                title='New Project'
-                subtitle='Yearly Project'
-                icon={<BriefcaseVariantOutline />}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <CardStatisticsVerticalComponent
-                stats='15'
-                color='warning'
-                trend='negative'
-                trendNumber='-18%'
-                subtitle='Last Week'
-                title='Sales Queries'
-                icon={<HelpCircleOutline />}
-              />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} md={6} lg={4}>
-          <SalesByCountries />
-        </Grid>
-        <Grid item xs={12} md={12} lg={8}>
-          <DepositWithdraw />
-        </Grid>
-        <Grid item xs={12}>
-          <Table />
-        </Grid>
+    <>
+      {/* <Grid container spacing={6}> */}
+      <Home />
+      {/* <Grid item xs={12} sm={6} md={4}>
+        <CardImgTop />
       </Grid>
-    </ApexChartWrapper>
+      <Grid item xs={12} sm={6} md={4}>
+        <CardUser />
+      </Grid> */}
+      {/* <Grid item xs={12} md={6}>
+        <CardWithCollapse />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <CardWithCollapse />
+      </Grid> */}
+      {/* <Grid item xs={12} sm={6}>
+        <CardMobile />
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <CardHorizontalRatings />
+      </Grid>
+      <Grid item xs={12} sm={6} md={4}>
+        <CardAppleWatch />
+      </Grid>
+      <Grid item xs={12} md={8}>
+        <CardMembership />
+      </Grid>
+      <Grid item xs={12} sm={6} md={4}>
+        <CardInfluencer />
+      </Grid>
+      <Grid item xs={12} sm={6} md={4}>
+        <CardVerticalRatings />
+      </Grid>
+      <Grid item xs={12} sm={6} md={4}>
+        <CardSupport />
+      </Grid>
+      <Grid item xs={12} sx={{ pb: 4, pt: theme => `${theme.spacing(17.5)} !important` }}>
+        <Typography variant='h5'>Navigation Cards</Typography>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <CardNavigation />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <CardNavigationCenter />
+      </Grid>
+      <Grid item xs={12} sx={{ pb: 4, pt: theme => `${theme.spacing(17.5)} !important` }}>
+        <Typography variant='h5'>Solid Cards</Typography>
+      </Grid>
+      <Grid item xs={12} sm={6} md={4}>
+        <CardTwitter />
+      </Grid>
+      <Grid item xs={12} sm={6} md={4}>
+        <CardFacebook />
+      </Grid>
+      <Grid item xs={12} sm={6} md={4}>
+        <CardLinkedIn />
+      </Grid> */}
+      {/* </Grid> */}
+    </>
   )
 }
 
-export default Dashboard
+export default CardBasic

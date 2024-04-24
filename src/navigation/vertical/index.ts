@@ -9,6 +9,9 @@ import CreditCardOutline from 'mdi-material-ui/CreditCardOutline'
 import AccountPlusOutline from 'mdi-material-ui/AccountPlusOutline'
 import AlertCircleOutline from 'mdi-material-ui/AlertCircleOutline'
 import GoogleCirclesExtended from 'mdi-material-ui/GoogleCirclesExtended'
+import Briefcase from 'mdi-material-ui/BriefcaseOutline'
+import Archive from 'mdi-material-ui/ArchiveOutline'
+import Qrcode from 'mdi-material-ui/Qrcode'
 
 // ** Type import
 import { VerticalNavItemsType } from 'src/@core/layouts/types'
@@ -16,64 +19,103 @@ import { VerticalNavItemsType } from 'src/@core/layouts/types'
 const navigation = (): VerticalNavItemsType => {
   return [
     {
-      title: 'Dashboard',
+      title: 'Beranda',
       icon: HomeOutline,
-      path: '/'
+      path: '/app/dashboard'
+    },
+    // {
+    //   title: 'Account Settings',
+    //   icon: AccountCogOutline,
+    //   path: '/app/account-settings'
+    // },
+    {
+      sectionTitle: 'Master'
     },
     {
-      title: 'Account Settings',
-      icon: AccountCogOutline,
-      path: '/account-settings'
-    },
-    {
-      sectionTitle: 'Pages'
-    },
-    {
-      title: 'Login',
-      icon: Login,
-      path: '/pages/login',
+      title: 'Pengarsipan',
+      icon: Archive,
+      path: '/app/archive',
       openInNewTab: true
     },
     {
-      title: 'Register',
-      icon: AccountPlusOutline,
-      path: '/pages/register',
+      title: 'Pemberkasan',
+      icon: Briefcase,
+      path: '/app/archive-file',
       openInNewTab: true
     },
     {
-      title: 'Error',
-      icon: AlertCircleOutline,
-      path: '/pages/error',
+      sectionTitle: 'Hasil'
+    },
+    {
+      title: 'IKU',
+      icon: Archive,
+      path: '/app/iku',
       openInNewTab: true
     },
     {
-      sectionTitle: 'User Interface'
+      title: 'Akreditasi',
+      icon: Briefcase,
+      path: '/app/accreditation',
+      openInNewTab: true
     },
     {
-      title: 'Typography',
-      icon: FormatLetterCase,
-      path: '/typography'
+      sectionTitle: 'Persiapan'
     },
     {
-      title: 'Icons',
-      path: '/icons',
-      icon: GoogleCirclesExtended
+      title: 'Cetak QR Code',
+      icon: Qrcode,
+      path: '/app/qr-code',
+      openInNewTab: true
     },
-    {
-      title: 'Cards',
-      icon: CreditCardOutline,
-      path: '/cards'
-    },
-    {
-      title: 'Tables',
-      icon: Table,
-      path: '/tables'
-    },
-    {
-      icon: CubeOutline,
-      title: 'Form Layouts',
-      path: '/form-layouts'
-    }
+    // {
+    //   sectionTitle: 'Pages'
+    // },
+    // {
+    //   title: 'Login',
+    //   icon: Login,
+    //   path: '/app/pages/login',
+    //   openInNewTab: true
+    // },
+    // {
+    //   title: 'Register',
+    //   icon: AccountPlusOutline,
+    //   path: '/app/pages/register',
+    //   openInNewTab: true
+    // },
+    // {
+    //   title: 'Error',
+    //   icon: AlertCircleOutline,
+    //   path: '/app/pages/error',
+    //   openInNewTab: true
+    // },
+    // {
+    //   sectionTitle: 'User Interface'
+    // },
+    // {
+    //   title: 'Typography',
+    //   icon: FormatLetterCase,
+    //   path: '/app/typography'
+    // },
+    // {
+    //   title: 'Icons',
+    //   path: '/app/icons',
+    //   icon: GoogleCirclesExtended
+    // },
+    // {
+    //   title: 'Cards',
+    //   icon: CreditCardOutline,
+    //   path: '/app/cards'
+    // },
+    // {
+    //   title: 'Tables',
+    //   icon: Table,
+    //   path: '/app/tables'
+    // },
+    // {
+    //   icon: CubeOutline,
+    //   title: 'Form Layouts',
+    //   path: '/app/form-layouts'
+    // }
   ]
 }
 

@@ -17,7 +17,13 @@ import CardActions from '@mui/material/CardActions'
 import ChevronUp from 'mdi-material-ui/ChevronUp'
 import ChevronDown from 'mdi-material-ui/ChevronDown'
 
-const CardWithCollapse = () => {
+import { QRCode } from 'react-qrcode-logo';
+
+interface CardWithCollapseType {
+  data: any
+}
+
+const CardWithCollapse: React.FC<CardWithCollapseType> = ({ data }) => {
   // ** State
   const [collapse, setCollapse] = useState<boolean>(false)
 
@@ -26,17 +32,60 @@ const CardWithCollapse = () => {
   }
 
   return (
-    <Card>
-      <CardMedia sx={{ height: '14.5625rem' }} image='/images/cards/paper-boat.png' />
-      <CardContent>
-        <Typography variant='h6' sx={{ marginBottom: 2 }}>
-          Popular Uses Of The Internet
-        </Typography>
-        <Typography variant='body2'>
-          Although cards can support multiple actions, UI controls, and an overflow menu.
-        </Typography>
+    <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', py: 1, background: '#dfe4ea' }}>
+        <Box sx={{ border: '1px solid #ced6e0', borderRadius: 1, background: 'white', p: 1 }}>
+          <Typography variant='body2'>QR Code Archive</Typography>
+          {/* @ts-ignore */}
+          <QRCode value={data?.barcode} logoImage={'/images/logos/logo-unram.png'} />
+        </Box>
+      </Box>
+      <CardContent sx={{ overflow: 'auto', flex: 1 }}>
+        <table>
+          <tbody>
+            <tr style={{ verticalAlign: 'baseline' }}>
+              <td>
+                <Typography variant='h6' sx={{ whiteSpace: 'pre' }}>
+                  Nomor
+                </Typography>
+              </td>
+              <td><Typography variant='h6'>:</Typography></td>
+              <td>
+                <Typography variant='h6'>
+                  {data?.Nomor}
+                </Typography>
+              </td>
+            </tr>
+            <tr style={{ verticalAlign: 'baseline' }}>
+              <td>
+                <Typography variant='body1' sx={{ whiteSpace: 'pre' }}>
+                  Tanggal
+                </Typography>
+              </td>
+              <td><Typography variant='body1'>:</Typography></td>
+              <td>
+                <Typography variant='body1'>
+                  {data?.Tgl}
+                </Typography>
+              </td>
+            </tr>
+            <tr style={{ verticalAlign: 'baseline' }}>
+              <td>
+                <Typography variant='body1' sx={{ whiteSpace: 'pre' }}>
+                  Hal
+                </Typography>
+              </td>
+              <td><Typography variant='body1'>:</Typography></td>
+              <td>
+                <Typography variant='body1'>
+                  {data?.Hal}
+                </Typography>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </CardContent>
-      <CardActions className='card-action-dense'>
+      {/* <CardActions className='card-action-dense'>
         <Box
           sx={{
             width: '100%',
@@ -50,19 +99,62 @@ const CardWithCollapse = () => {
             {collapse ? <ChevronUp sx={{ fontSize: '1.875rem' }} /> : <ChevronDown sx={{ fontSize: '1.875rem' }} />}
           </IconButton>
         </Box>
-      </CardActions>
-      <Collapse in={collapse}>
+      </CardActions> */}
+      {/* <Collapse in={collapse}>
         <Divider sx={{ margin: 0 }} />
         <CardContent>
-          <Typography variant='body2'>
-            I&prime;m a thing. But, like most politicians, he promised more than he could deliver. You won&prime;t have
-            time for sleeping, soldier, not with all the bed making you&prime;ll be doing. Then we&prime;ll go with that
-            data file! Hey, you add a one and two zeros to that or we walk! You&prime;re going to do his laundry?
-            I&prime;ve got to find a way to escape.
-          </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'center', py: 1, background: '#dfe4ea' }}>
+            <Box sx={{ border: '1px solid #ced6e0', borderRadius: 1, background: 'white', p: 1 }}>
+              <Typography variant='body2'>QR Code Archive File</Typography>
+              <QRCode value="https://github.com/gcoro/react-qrcode-logo" logoImage={'/images/logos/logo-unram.png'} />
+            </Box>
+          </Box>
+          <table>
+            <tbody>
+              <tr style={{ verticalAlign: 'baseline' }}>
+                <td>
+                  <Typography variant='h6' sx={{ whiteSpace: 'pre' }}>
+                    Nomor Berkas
+                  </Typography>
+                </td>
+                <td><Typography variant='h6'>:</Typography></td>
+                <td>
+                  <Typography variant='h6'>
+                    234/UN18.F6/JTM/EP/2023
+                  </Typography>
+                </td>
+              </tr>
+              <tr style={{ verticalAlign: 'baseline' }}>
+                <td>
+                  <Typography variant='body1' sx={{ whiteSpace: 'pre' }}>
+                    Tanggal Berkas
+                  </Typography>
+                </td>
+                <td><Typography variant='body1'>:</Typography></td>
+                <td>
+                  <Typography variant='body1'>
+                    2023-10-26
+                  </Typography>
+                </td>
+              </tr>
+              <tr style={{ verticalAlign: 'baseline' }}>
+                <td>
+                  <Typography variant='body1' sx={{ whiteSpace: 'pre' }}>
+                    Hal
+                  </Typography>
+                </td>
+                <td><Typography variant='body1'>:</Typography></td>
+                <td>
+                  <Typography variant='body1'>
+                    Permohonan SK Mengajar Semester Ganjil 2023-2024 Jurusan Teknik Mesin
+                  </Typography>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </CardContent>
-      </Collapse>
-    </Card>
+      </Collapse> */}
+    </Card >
   )
 }
 

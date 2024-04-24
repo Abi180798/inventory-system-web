@@ -2,6 +2,7 @@
 import { ReactNode } from 'react'
 
 // ** Next Import
+import Image from 'next/image'
 import Link from 'next/link'
 
 // ** MUI Imports
@@ -16,10 +17,10 @@ import { Settings } from 'src/@core/context/settingsContext'
 import themeConfig from 'src/configs/themeConfig'
 
 interface Props {
-  hidden: boolean
-  settings: Settings
-  toggleNavVisibility: () => void
-  saveSettings: (values: Settings) => void
+  hidden?: boolean
+  settings?: Settings
+  toggleNavVisibility?: () => void
+  saveSettings?: (values: Settings) => void
   verticalNavMenuBranding?: (props?: any) => ReactNode
 }
 
@@ -64,7 +65,8 @@ const VerticalNavHeader = (props: Props) => {
           alignItems: 'center',
           textDecoration: 'none'
         }}>
-          <svg
+          <Image alt='sikuram' src={'/images/logos/logo-unram.png'} width={40} height={40} />
+          {/* <svg
             width={30}
             height={25}
             version='1.1'
@@ -122,7 +124,7 @@ const VerticalNavHeader = (props: Props) => {
                 </g>
               </g>
             </g>
-          </svg>
+          </svg> */}
           <HeaderTitle variant='h6' sx={{ ml: 3 }}>
             {themeConfig.templateName}
           </HeaderTitle>

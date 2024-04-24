@@ -1,6 +1,8 @@
 const path = require('path')
 
 module.exports = {
+  output: 'export',
+  images: { unoptimized: true },
   trailingSlash: true,
   reactStrictMode: false,
   experimental: {
